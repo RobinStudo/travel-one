@@ -1,0 +1,18 @@
+h1{
+    margin-bottom: 0;
+}
+
+.places{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+
+    mat-card{
+        img{
+            height: 300px;
+            object-fit: cover;
+        }
+    }
+}
