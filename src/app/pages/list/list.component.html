@@ -1,25 +1,39 @@
 <h1>Nos destinations de rêves</h1>
 
-<p *ngIf="places.length > 0; else empty">
-    Découvrez nos {{ places.length }} destinations pour vous évadez
-</p>
-<ng-template #empty>
+<ng-container *ngIf="!inError; else error">
+    <ng-container *ngIf="places; else loader">
+        <p *ngIf="places.length > 0; else empty">
+            Découvrez nos {{ places.length }} destinations pour vous évadez
+        </p>
+        <ng-template #empty>
+            <p>
+                Aucune destination disponible pour le moment
+            </p>
+        </ng-template>
+        
+        <section class="places">
+            <mat-card class="place" *ngFor="let place of places" [routerLink]="['/display', place.id]">
+                <mat-card-header>
+                    <mat-card-title>{{ place.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ place.category }}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="place.picture" [alt]="place.name">
+                <mat-card-content>
+                    {{ place.price }}€
+                </mat-card-content>
+            </mat-card>
+        </section>
+    </ng-container>
+
+    <ng-template #loader>
+        <div class="loader">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-template>
+</ng-container>
+
+<ng-template #error>
     <p>
-        Aucune destination disponible pour le moment
+        Une erreur est survenue, veuillez réessayer plus tard
     </p>
 </ng-template>
-
-<section class="places">
-    <mat-card class="place" *ngFor="let place of places" [routerLink]="['/display', place.id]">
-        <mat-card-header>
-            <mat-card-title>{{ place.name }}</mat-card-title>
-            <mat-card-subtitle>{{ place.category }}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="place.picture" [alt]="place.name">
-        <mat-card-content>
-            {{ place.price }}€
-        </mat-card-content>
-    </mat-card>
-</section>
-
-

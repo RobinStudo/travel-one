@@ -9,7 +9,8 @@ import { Place } from "../../interfaces/place";
     styleUrls: ['./display.component.scss']
 })
 export class DisplayComponent implements OnInit {
-    place: Place|undefined;
+    place!: Place;
+    inError: boolean = false;
 
     constructor(
         private router: Router,
@@ -17,11 +18,16 @@ export class DisplayComponent implements OnInit {
         private placeService: PlaceService
     ) {
         const id = parseInt(this.route.snapshot.params['id']);
-        this.place = this.placeService.get(id);
-
-        if(!this.place){
-            this.router.navigate(['/404']);
-        }
+        this.placeService.get(id).subscribe({
+            next: place => this.place = place,
+            error: err => {
+                if(err.status === 404){
+                    this.router.navigate(['/404']);
+                }else{
+                    this.inError = true;
+                }
+            },
+        });
     }
 
 

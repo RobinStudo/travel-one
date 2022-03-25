@@ -8,10 +8,18 @@ import { Place } from "../../interfaces/place";
     styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-    places: Place[];
+    places!: Place[];
+    inError: boolean = false;
 
     constructor(private placeService: PlaceService){
-        this.places = this.placeService.getAll();
+        this.placeService.getAll().subscribe({
+            next: places => {
+                this.places = places;
+            },
+            error: () => {
+                this.inError = true;
+            }
+        });
     }
 
     ngOnInit(): void {

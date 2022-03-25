@@ -1,0 +1,46 @@
+{
+    "places": [
+        {
+            "id": 1,
+            "name": "Paris",
+            "picture": "https://bit.ly/36DcJol",
+            "price": 250,
+            "category": "Urbain"
+        },
+        {
+            "id": 2,
+            "name": "Berlin",
+            "picture": "https://bit.ly/3wzysby",
+            "price": 200,
+            "category": "Urbain"
+        },
+        {
+            "id": 3,
+            "name": "Annecy",
+            "picture": "https://bit.ly/37N2sGE",
+            "price": 150,
+            "category": "Montagne"
+        },
+        {
+            "id": 4,
+            "name": "Bali",
+            "picture": "https://bit.ly/3JGK9kK",
+            "price": 1500,
+            "category": "Mer"
+        },
+        {
+            "id": 5,
+            "name": "Alpes",
+            "picture": "https://bit.ly/36kz5eH",
+            "price": 620,
+            "category": "Montagne"
+        },
+        {
+            "id": 6,
+            "name": "Côte d'Azur",
+            "picture": "https://bit.ly/3Nmxd5Q",
+            "price": 800,
+            "category": "Mer"
+        }
+    ]
+}

@@ -11,6 +11,7 @@ import { ListComponent } from './pages/list/list.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DisplayComponent } from './pages/display/display.component';
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { DisplayComponent } from './pages/display/display.component';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        HttpClientModule,
         AppRoutingModule,
         MaterialModule,
     ],
