@@ -11,6 +11,7 @@ import { Place } from "../../interfaces/place";
 export class DisplayComponent implements OnInit {
     place!: Place;
     inError: boolean = false;
+    isExpanded: boolean = false;
 
     constructor(
         private router: Router,
@@ -32,5 +33,9 @@ export class DisplayComponent implements OnInit {
 
 
     ngOnInit(): void {
+    }
+
+    expand(): void{
+        this.isExpanded = !this.isExpanded;
     }
 }

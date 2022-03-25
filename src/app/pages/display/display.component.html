@@ -2,6 +2,10 @@
     <ng-container *ngIf="place; else loader">
         <h1>{{ place.name }}</h1>
         <img [src]="place.picture" [alt]="place.name">
+
+        <p [ngClass]="{'collapsed': !isExpanded}" (click)="expand()">
+            {{ place.description }}
+        </p>
     </ng-container>
 
     <ng-template #loader>

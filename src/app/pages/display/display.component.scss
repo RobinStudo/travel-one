@@ -1,3 +1,25 @@
 img{
     width: 100%;
 }
+
+p{
+    margin-top: 20px;
+}
+
+.collapsed{
+    position: relative;
+    height: calc(4 * 1.1rem);
+    overflow: hidden;
+    cursor: pointer;
+
+    &:after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+    }
+}

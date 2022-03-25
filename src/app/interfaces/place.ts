@@ -4,6 +4,7 @@ export interface Place{
     picture: string;
     price: number;
     category: PlaceCategory;
+    description: string;
 }
 
 export enum PlaceCategory{
