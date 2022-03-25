@@ -15,7 +15,7 @@
             <mat-card class="place" *ngFor="let place of places" [routerLink]="['/display', place.id]">
                 <mat-card-header>
                     <mat-card-title>{{ place.name }}</mat-card-title>
-                    <mat-card-subtitle>{{ place.category }}</mat-card-subtitle>
+                    <mat-card-subtitle>{{ place.category|visualCategory }}</mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image [src]="place.picture" [alt]="place.name">
                 <mat-card-content>

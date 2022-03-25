@@ -14,6 +14,7 @@ import { DisplayComponent } from './pages/display/display.component';
 import { HttpClientModule } from "@angular/common/http";
 import { LoaderComponent } from './components/loader/loader.component';
 import { ErrorComponent } from './components/error/error.component';
+import { VisualCategoryPipe } from './pipes/visual-category.pipe';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ErrorComponent } from './components/error/error.component';
         NotFoundComponent,
         DisplayComponent,
         LoaderComponent,
-        ErrorComponent
+        ErrorComponent,
+        VisualCategoryPipe
     ],
     imports: [
         BrowserModule,
