@@ -12,6 +12,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DisplayComponent } from './pages/display/display.component';
 import { HttpClientModule } from "@angular/common/http";
+import { LoaderComponent } from './components/loader/loader.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { HttpClientModule } from "@angular/common/http";
         ListComponent,
         HomeComponent,
         NotFoundComponent,
-        DisplayComponent
+        DisplayComponent,
+        LoaderComponent,
+        ErrorComponent
     ],
     imports: [
         BrowserModule,
