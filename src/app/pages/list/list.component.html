@@ -10,7 +10,7 @@
 </ng-template>
 
 <section class="places">
-    <mat-card class="place" *ngFor="let place of places">
+    <mat-card class="place" *ngFor="let place of places" [routerLink]="['/display', place.id]">
         <mat-card-header>
             <mat-card-title>{{ place.name }}</mat-card-title>
             <mat-card-subtitle>{{ place.category }}</mat-card-subtitle>
