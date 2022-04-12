@@ -1,0 +1,37 @@
+<h1>Ajouter une destination</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Nom de la destination</mat-label>
+        <input matInput formControlName="name">
+        <mat-error>Le nom doit comporter entre 5 et 60 caractères</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>URL de l'image</mat-label>
+        <input matInput formControlName="picture">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Prix du séjour</mat-label>
+        <input matInput formControlName="price">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Catégorie de la destination</mat-label>
+        <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories | keyvalue" [value]="category.value">
+                {{ category.value }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput rows="8" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <div class="form-end">
+        <button mat-raised-button>Ajouter</button>
+    </div>
+</form>

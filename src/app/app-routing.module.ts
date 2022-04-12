@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from "./pages/list/list.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { NotFoundComponent } from "./pages/not-found/not-found.component";
-import {DisplayComponent} from "./pages/display/display.component";
+import { DisplayComponent } from "./pages/display/display.component";
+import { AddComponent } from "./pages/add/add.component";
 
 const routes: Routes = [
     {
@@ -20,9 +21,13 @@ const routes: Routes = [
         component: DisplayComponent,
     },
     {
+        path: 'add',
+        component: AddComponent,
+    },
+    {
         path: '**',
         component: NotFoundComponent
-    }
+    },
 ];
 
 @NgModule({

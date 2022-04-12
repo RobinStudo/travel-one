@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+
 import { MaterialModule } from "./modules/material/material.module";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,11 +14,10 @@ import { ListComponent } from './pages/list/list.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DisplayComponent } from './pages/display/display.component';
-import { HttpClientModule } from "@angular/common/http";
 import { LoaderComponent } from './components/loader/loader.component';
 import { ErrorComponent } from './components/error/error.component';
 import { VisualCategoryPipe } from './pipes/visual-category.pipe';
-
+import { AddComponent } from './pages/add/add.component';
 
 @NgModule({
     declarations: [
@@ -28,12 +30,14 @@ import { VisualCategoryPipe } from './pipes/visual-category.pipe';
         DisplayComponent,
         LoaderComponent,
         ErrorComponent,
-        VisualCategoryPipe
+        VisualCategoryPipe,
+        AddComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        ReactiveFormsModule,
         AppRoutingModule,
         MaterialModule,
     ],
