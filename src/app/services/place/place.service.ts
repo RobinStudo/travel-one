@@ -16,4 +16,8 @@ export class PlaceService {
     get(id: number): Observable<Place>{
         return this.http.get<Place>('http://localhost:3000/places/' + id);
     }
+
+    add(place: Place): Observable<Place>{
+        return this.http.post<Place>('http://localhost:3000/places', place);
+    }
 }

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { PlaceCategory } from "../../interfaces/place";
 import { UrlPictureValidator } from "../../validators/url-picture.validator";
+import { LanguageValidator } from "../../validators/language.validator";
+import { PlaceService } from "../../services/place/place.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-add',
@@ -14,6 +17,8 @@ export class AddComponent implements OnInit {
 
     constructor(
         private builder: FormBuilder,
+        private router: Router,
+        private placeService: PlaceService,
         private urlPictureValidator: UrlPictureValidator
     ){}
 
@@ -21,7 +26,7 @@ export class AddComponent implements OnInit {
         this.form = this.builder.group({
             name: ['', [
                 Validators.required,
-                Validators.minLength(5),
+                Validators.minLength(3),
                 Validators.maxLength(60),
             ]],
             picture: ['', {
@@ -44,11 +49,24 @@ export class AddComponent implements OnInit {
                 Validators.required,
                 Validators.minLength(10),
                 Validators.maxLength(10000),
+                LanguageValidator.validate(),
             ]],
         });
     }
 
     onSubmit(): void{
-        console.log(this.form);
+        if(this.form.invalid){
+            return;
+        }
+
+        const place = this.form.value;
+        this.placeService.add(place).subscribe({
+            next: () => {
+                this.router.navigate(['list']);
+            },
+            error: () => {
+                alert("Erreur lors de l'envoi du formulaire");
+            },
+        });
     }
 }

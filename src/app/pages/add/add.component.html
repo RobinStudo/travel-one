@@ -32,7 +32,14 @@
     <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
         <textarea matInput rows="8" formControlName="description"></textarea>
-        <mat-error>La description doit contenir entre 10 et 10 000 caractères</mat-error>
+        <mat-error>
+            <ng-container *ngIf="form.controls['description'].errors?.['badLanguage']; else descriptionDefaultMessage">
+                Votre description contient du langage grossier
+            </ng-container>
+            <ng-template #descriptionDefaultMessage>
+                La description doit contenir entre 10 et 10 000 caractères
+            </ng-template>
+        </mat-error>
     </mat-form-field>
 
     <div class="form-end">
