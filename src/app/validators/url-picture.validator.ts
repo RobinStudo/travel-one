@@ -1,8 +1,13 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { Observable, of, Subscriber } from "rxjs";
+import { Injectable } from "@angular/core";
 
+@Injectable({
+    providedIn: 'root'
+})
 export class UrlPictureValidator{
 
-    static validate(): ValidatorFn{
+    validate(): ValidatorFn{
         return (control: AbstractControl): ValidationErrors | null => {
             try{
                 new URL(control.value);
@@ -14,4 +19,20 @@ export class UrlPictureValidator{
         };
     }
 
+    asyncValidate(): AsyncValidatorFn{
+        return (control: AbstractControl): Observable<ValidationErrors | null> => {
+            return new Observable<ValidationErrors | null>((observer: Subscriber<any>) => {
+                const img = new Image();
+                img.onerror = () => {
+                    observer.next({invalidImageUrl: true});
+                    observer.complete();
+                };
+                img.onload = () => {
+                    observer.next(null);
+                    observer.complete();
+                };
+                img.src = control.value;
+            });
+        };
+    }
 }

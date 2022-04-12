@@ -12,7 +12,10 @@ export class AddComponent implements OnInit {
     form!: FormGroup;
     categories: any = PlaceCategory;
 
-    constructor(private builder: FormBuilder){}
+    constructor(
+        private builder: FormBuilder,
+        private urlPictureValidator: UrlPictureValidator
+    ){}
 
     ngOnInit(): void{
         this.form = this.builder.group({
@@ -21,10 +24,13 @@ export class AddComponent implements OnInit {
                 Validators.minLength(5),
                 Validators.maxLength(60),
             ]],
-            picture: ['', [
-                Validators.required,
-                UrlPictureValidator.validate(),
-            ]],
+            picture: ['', {
+                validators: [
+                    Validators.required,
+                    this.urlPictureValidator.validate(),
+                ],
+                asyncValidators: [this.urlPictureValidator.asyncValidate()]
+            }],
             price: ['', [
                 Validators.required,
                 Validators.pattern('\\d+(.\\d{1,2})?'),
