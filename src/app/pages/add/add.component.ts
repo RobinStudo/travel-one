@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { PlaceCategory } from "../../interfaces/place";
+import { UrlPictureValidator } from "../../validators/url-picture.validator";
 
 @Component({
     selector: 'app-add',
@@ -20,14 +21,28 @@ export class AddComponent implements OnInit {
                 Validators.minLength(5),
                 Validators.maxLength(60),
             ]],
-            picture: [''],
-            price: [''],
-            category: [''],
-            description: [''],
+            picture: ['', [
+                Validators.required,
+                UrlPictureValidator.validate(),
+            ]],
+            price: ['', [
+                Validators.required,
+                Validators.pattern('\\d+(.\\d{1,2})?'),
+                Validators.min(100),
+                Validators.max(10000),
+            ]],
+            category: ['', [
+                Validators.required,
+            ]],
+            description: ['', [
+                Validators.required,
+                Validators.minLength(10),
+                Validators.maxLength(10000),
+            ]],
         });
     }
 
     onSubmit(): void{
-        console.log(this.form.value);
+        console.log(this.form);
     }
 }
